@@ -66,6 +66,8 @@ class TaskType(metaclass=ABCMeta):
     ALLOW_PARTIAL_SUBMISSION = False
     REUSE_PREVIOUS_SUBMISSION = True
 
+    ALLOW_SUBMISSION = True
+
     # A list of all the accepted parameters for this task type.
     # Each item is an instance of TaskTypeParameter.
     ACCEPTED_PARAMETERS: list[ParameterType] = []
