@@ -136,6 +136,10 @@ class TaskSubmissionsHandler(ContestHandler):
         if task is None:
             raise tornado_web.HTTPError(404)
 
+        task_type = task.active_dataset.task_type_object
+        if not task_type.ALLOW_SUBMISSION:
+            raise tornado.web.HTTPError(404)
+
         submissions: list[Submission] = (
             self.sql_session.query(Submission)
             .filter(Submission.participation == participation)
