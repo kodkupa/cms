@@ -35,7 +35,7 @@ logger = logging.getLogger(__name__)
 
 
 def add_statement(
-    task_name: str, language_code: str, statement_file: str, overwrite: bool
+    task_name: str, language_code: str, statement_file: str, overwrite: bool, default: bool
 ):
     logger.info("Adding the statement(language: %s) of task %s "
                 "in the database.", language_code, task_name)
@@ -77,6 +77,17 @@ def add_statement(
                              "Not overwriting.")
                 return False
         statement = Statement(language_code, digest, task=task)
+
+        # create a new list instance to force ORM object update
+        primary_statements = task.primary_statements.copy()
+
+        if default and language_code not in task.primary_statements:
+            primary_statements.append(language_code)
+        elif not default and language_code in task.primary_statements:
+            primary_statements.remove(language_code)
+
+        task.primary_statements = primary_statements
+
         session.add(statement)
         session.commit()
 
@@ -98,12 +109,15 @@ def main():
     parser.add_argument("-o", "--overwrite", dest="overwrite",
                         action="store_true",
                         help="overwrite existing statement")
-    parser.set_defaults(overwrite=False)
+    parser.add_argument("-d", "--default", dest="default",
+                        action="store_true",
+                        help="set statement as default")
+    parser.set_defaults(overwrite=False, default=False)
 
     args = parser.parse_args()
 
     success = add_statement(args.task_name, args.language_code,
-                            args.statement_file, args.overwrite)
+                            args.statement_file, args.overwrite, args.default)
     return 0 if success is True else 1
 
 
