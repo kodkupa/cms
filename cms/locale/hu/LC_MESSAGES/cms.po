@@ -226,6 +226,13 @@ msgstr[1] "Maximum %(max_number)d %(type_s)st használhatsz fel."
 msgid "You have no limitations on how you use them."
 msgstr "Nincsenek korlátozások a zsetonok felhasználására vonatkozóan."
 
+msgid "Too many print jobs!"
+msgstr "Túl sok nyomtatási feladat!"
+
+#, python-format
+msgid "You have reached the maximum limit of at most %d print jobs."
+msgstr "Elérted a nyomtatási korlátot: %d"
+
 msgid "Invalid format!"
 msgstr "Érvénytelen formátum!"
 
@@ -238,6 +245,9 @@ msgstr "Túl nagy fájl!"
 #, python-format
 msgid "Each file must be at most %d bytes long."
 msgstr "Minden fájl maximum %d bájt méretű lehet."
+
+msgid "Print job storage failed!"
+msgstr "A nyomtatási feladat mentése nem sikerült!"
 
 msgid "Please try again."
 msgstr "Kérlek próbáld újra."
@@ -256,6 +266,12 @@ msgstr "Kérdés elküldve"
 
 msgid "Your question has been received, you will be notified when it is answered."
 msgstr "A kérdésed el lett küldve, értesítve leszel amint megválaszolásra kerül."
+
+msgid "Print job received"
+msgstr "Nyomtatási feladat elküldve"
+
+msgid "Your print job has been received."
+msgstr "A nyomtatási feladatod sikeresen fogadva"
 
 msgid "Submission received"
 msgstr "Beküldés elküldve"
@@ -277,6 +293,12 @@ msgstr "Kiértékelve"
 
 msgid "status"
 msgstr "állapot"
+
+msgid "Token request received"
+msgstr "Zseton kérelem elküldve"
+
+msgid "Your request has been received and applied to the submission."
+msgstr "A kérelmed fogadva és alkalmazva lett a beküldésre."
 
 msgid "Test received"
 msgstr "Teszt elküldve"
@@ -315,8 +337,14 @@ msgstr "Az összes feladatra vonatkoztatva az utolsó beküldésed után %d más
 msgid "For this task, you can submit again after %d seconds from last submission."
 msgstr "Ennél a feladatnál az utolsó beküldésed után %d másodperccel tudsz újra beküldeni."
 
+msgid "Invalid archive format!"
+msgstr "Érvénytelen archívum formátum!"
+
 msgid "The submitted archive could not be opened."
 msgstr "A beküldött tömörített állományt nem sikerült megnyitni."
+
+msgid "Invalid submission format!"
+msgstr "Érvénytelen beküldési formátum!"
 
 msgid "Submission too big!"
 msgstr "Túl nagy beküldés!"
@@ -327,6 +355,17 @@ msgstr "Minden forrásfájl maximum %d bájt méretű lehet."
 
 msgid "Submission storage failed!"
 msgstr "A beküldés mentése nem sikerült!"
+
+msgid "Too many tests!"
+msgstr "Túl sok teszt!"
+
+#, python-format
+msgid "You have reached the maximum limit of at most %d tests among all tasks."
+msgstr "Elérted az összes feladatra engedélyezett tesztek maximális számát (%d)."
+
+#, python-format
+msgid "You have reached the maximum limit of at most %d tests on this task."
+msgstr "Elérted az erre a feladatra engedélyezett tesztek maximális számát (%d)."
 
 msgid "Tests too frequent!"
 msgstr "Túl gyakori tesztelés!"
@@ -351,6 +390,9 @@ msgstr "Túl nagy bemenet!"
 #, python-format
 msgid "The input file must be at most %d bytes long."
 msgstr "A bemeneti fájl maximum %d bájt méretű lehet."
+
+msgid "Test storage failed!"
+msgstr "A teszt mentése nem sikerült!"
 
 msgid "Communication"
 msgstr "Kommunikáció"
@@ -563,6 +605,9 @@ msgstr "Végtelen zsetonod van."
 msgid "You can see the detailed result of a submission by using a token on it."
 msgstr "Zsetonok felhasználásával megtekintheted egy beküldés részleteit."
 
+msgid "Your score for each task will be the maximum among the tokened submissions and the last one."
+msgstr "Minden feladat pontszáma a zsetonos beküldések és a legutolsó beküldés maximuma."
+
 msgid "You have a distinct set of tokens for each task."
 msgstr "Vannak zsetonjaid, amin nem osztoznak a feladatok."
 
@@ -582,6 +627,10 @@ msgstr "Egy beküldés részletes eredményét megtekintheted, ha mindkétféle 
 #, python-format
 msgid "You can submit at most %(submissions)s solutions during this contest."
 msgstr "Maximum %(submissions)s alkalommal küldhetsz be megoldást a verseny ideje alatt."
+
+#, python-format
+msgid "You can submit at most %(user_tests)s user tests during this contest."
+msgstr "Maximum %(user_tests)s tesztet küldhetsz be a verseny alatt."
 
 #, python-format
 msgid "Every user is allowed to compete (i.e. submit solutions) for a uninterrupted time frame of %(per_user_time)s."
@@ -649,6 +698,18 @@ msgstr "Nem"
 msgid "Print"
 msgstr "Nyomtatás"
 
+#, python-format
+msgid ""
+"You can print %(remaining_jobs)s more text or PDF files of up to "
+"%(max_pages)s pages each."
+msgstr "Még %(remaining_jobs)s szöveg vagy PDF fájlt nyomtathasz, mindegyiket maximum %(max_pages)s oldallal."
+
+#, python-format
+msgid ""
+"You can print %(remaining_jobs)s more text files of up to %(max_pages)s "
+"pages each."
+msgstr "Még %(remaining_jobs)s szövegfájlt nyomtathasz, mindegyiket maximum %(max_pages)s oldallal."
+
 msgid "File (text or PDF)"
 msgstr "Fájl (szöveg vagy PDF)"
 
@@ -705,6 +766,9 @@ msgstr "Kérlek töltsd ki a mezőket a regisztrációhoz"
 
 msgid "New user"
 msgstr "Új felhasználó"
+
+msgid "Join contest"
+msgstr "Belépés a versenybe"
 
 msgid "First name"
 msgstr "Keresztnév"
@@ -833,6 +897,9 @@ msgstr "Teljes pontszám:"
 msgid "Submit a solution"
 msgstr "Megoldás beküldése"
 
+msgid "You may submit any subset of outputs in a single submission."
+msgstr "A kimenetek bármely részhalmazát hozzáadhatod egyetlen beküldéshez."
+
 #, python-format
 msgid "You can submit %(submissions_left)s more solution(s)."
 msgstr "Még %(submissions_left)s alkalommal küldhetsz be megoldást."
@@ -955,4 +1022,3 @@ msgstr "A nyomtatandó dokumentum túl sok oldalt tartalmaz"
 
 msgid "Sent to printer"
 msgstr "Elküldve a nyomtatónak"
-
