@@ -244,6 +244,15 @@ msgstr "Kérdés elküldve"
 msgid "Your question has been received, you will be notified when it is answered."
 msgstr "A kérdésed el lett küldve, értesítve leszel amint megválaszolásra kerül."
 
+<<<<<<< HEAD
+=======
+msgid "Print job received"
+msgstr "Nyomtatási feladat elküldve"
+
+msgid "Your print job has been received."
+msgstr "A nyomtatási feladatod sikeresen fogadva"
+
+>>>>>>> de66949a (Add Hungarian translation)
 msgid "Submission received"
 msgstr "Beküldés elküldve"
 
@@ -265,13 +274,11 @@ msgstr "Kiértékelve"
 msgid "status"
 msgstr "állapot"
 
-#, fuzzy
 msgid "Token request received"
-msgstr "Zseton kérelem elutasítva"
+msgstr "Zseton kérelem elküldve"
 
-#, fuzzy
 msgid "Your request has been received and applied to the submission."
-msgstr "A kérelmed el lett utasítva, mert már felhasználtál egy zseton erre a beküldésre."
+msgstr "A kérelmed fogadva és alkalmazva lett a beküldésre."
 
 msgid "Test received"
 msgstr "Teszt elküldve"
@@ -321,16 +328,14 @@ msgstr "Minden forrásfájl maximum %d bájt méretű lehet."
 msgid "The submission should contain at most %d files."
 msgstr ""
 
-#, fuzzy
 msgid "Invalid archive format!"
-msgstr "Érvénytelen teszt formátum!"
+msgstr "Érvénytelen archívum formátum!"
 
 msgid "The submitted archive could not be opened."
 msgstr "A beküldött tömörített állományt nem sikerült megnyitni."
 
-#, fuzzy
 msgid "Invalid submission format!"
-msgstr "Érvénytelen teszt formátum!"
+msgstr "Érvénytelen beküldési formátum!"
 
 msgid "Please select the correct files."
 msgstr "Kérlek válaszd ki a megfelelő fájlokat."
@@ -341,17 +346,16 @@ msgstr "A beküldés mentése nem sikerült!"
 msgid "Please try again."
 msgstr "Kérlek próbáld újra."
 
-#, fuzzy
 msgid "Too many tests!"
-msgstr "Túl sok beküldés!"
+msgstr "Túl sok teszt!"
 
-#, fuzzy, python-format
+#, python-format
 msgid "You have reached the maximum limit of at most %d tests among all tasks."
-msgstr "Elérted az összes feladatra engedélyezett beküldések maximális számát (%d)."
+msgstr "Elérted az összes feladatra engedélyezett tesztek maximális számát (%d)."
 
-#, fuzzy, python-format
+#, python-format
 msgid "You have reached the maximum limit of at most %d tests on this task."
-msgstr "Elérted az erre a feladatra engedélyezett beküldések maximális számát (%d)."
+msgstr "Elérted az erre a feladatra engedélyezett tesztek maximális számát (%d)."
 
 msgid "Tests too frequent!"
 msgstr "Túl gyakori tesztelés!"
@@ -377,9 +381,8 @@ msgstr "Túl nagy bemenet!"
 msgid "The input file must be at most %d bytes long."
 msgstr "A bemeneti fájl maximum %d bájt méretű lehet."
 
-#, fuzzy
 msgid "Test storage failed!"
-msgstr "A beküldés mentése nem sikerült!"
+msgstr "A teszt mentése nem sikerült!"
 
 msgid "Communication"
 msgstr "Kommunikáció"
@@ -610,9 +613,8 @@ msgstr "Végtelen zsetonod van."
 msgid "You can see the detailed result of a submission by using a token on it."
 msgstr "Zsetonok felhasználásával megtekintheted egy beküldés részleteit."
 
-#, fuzzy
 msgid "Your score for each task will be the maximum among the tokened submissions and the last one."
-msgstr "Elérted az erre a feladatra engedélyezett beküldések maximális számát (%d)."
+msgstr "Minden feladat pontszáma a zsetonos beküldések és a legutolsó beküldés maximuma."
 
 msgid "You have a distinct set of tokens for each task."
 msgstr "Vannak zsetonjaid, amin nem osztoznak a feladatok."
@@ -637,6 +639,10 @@ msgstr "Maximum %(submissions)s alkalommal küldhetsz be megoldást a verseny id
 #, fuzzy, python-format
 msgid "You can submit at most %(user_tests)s user tests during this contest."
 msgstr "Maximum %(submissions)s alkalommal küldhetsz be megoldást a verseny ideje alatt."
+
+#, python-format
+msgid "You can submit at most %(user_tests)s user tests during this contest."
+msgstr "Maximum %(user_tests)s tesztet küldhetsz be a verseny alatt."
 
 #, python-format
 msgid "Every user is allowed to compete (i.e. submit solutions) for a uninterrupted time frame of %(per_user_time)s."
@@ -725,9 +731,8 @@ msgstr "Kérlek töltsd ki a mezőket a regisztrációhoz"
 msgid "New user"
 msgstr "Új felhasználó"
 
-#, fuzzy
 msgid "Join contest"
-msgstr "Válassz egy versenyt"
+msgstr "Belépés a versenybe"
 
 msgid "First name"
 msgstr "Keresztnév"
@@ -860,7 +865,7 @@ msgid "Submit a solution"
 msgstr "Megoldás beküldése"
 
 msgid "You may submit any subset of outputs in a single submission."
-msgstr ""
+msgstr "A kimenetek bármely részhalmazát hozzáadhatod egyetlen beküldéshez."
 
 #, python-format
 msgid "You can submit %(submissions_left)s more solution(s)."
@@ -973,3 +978,23 @@ msgstr "A kérelmed el lett utasítva, mert nincsenek zsetonjaid."
 msgid "Your request has been discarded because you already used a token on that submission."
 msgstr "A kérelmed el lett utasítva, mert már felhasználtál egy zseton erre a beküldésre."
 
+<<<<<<< HEAD
+=======
+msgid "Invalid file"
+msgstr "Érvénytelen fájl"
+
+msgid "Print job has too many pages"
+msgstr "A nyomtatandó dokumentum túl sok oldalt tartalmaz"
+
+msgid "Sent to printer"
+msgstr "Elküldve a nyomtatónak"
+
+#~ msgid "Execution killed (could be triggered by violating memory limits)"
+#~ msgstr "Kilőve futás közben (memóriatúllépés is okozhatja)"
+
+#~ msgid "The evaluation was killed by a signal. Among other things, this might be caused by exceeding the memory limit. Note that if this is the reason, the memory usage visible in the submission details is the usage before the allocation that caused the signal."
+#~ msgstr "A kiértékelés hibakóddal fejeződött be. Többek között ezt a túlzott memóriahasználat okozhatja. Fontos, ha valóban ez okozta a hibát, akkor a beküldés részletes megtekintésekor mutatott memóriahasználat a hibát kiváltó memóriafoglalás előtti állapotot mutatja."
+
+#~ msgid "Standard Template Library"
+#~ msgstr "Standard Template Library"
+>>>>>>> de66949a (Add Hungarian translation)
