@@ -392,7 +392,12 @@ class ScoreTypeGroup(ScoreTypeAlone):
 
             testcases = []
             public_testcases = []
+            # In restricted feedback:
+            # - show until the first incorrect testcase (if there's any)
+            # - otherwise, show until the first partial testcase
             previous_tc_all_correct = True
+            previous_tc_all_positive = True
+            tc_may_show_later = []
             for tc_idx in target:
                 tc_outcome = self.get_public_outcome(
                     float(evaluations[tc_idx].outcome), parameter)
@@ -404,6 +409,8 @@ class ScoreTypeGroup(ScoreTypeAlone):
                     "time": evaluations[tc_idx].execution_time,
                     "memory": evaluations[tc_idx].execution_memory,
                     "show_in_restricted_feedback": previous_tc_all_correct})
+                if previous_tc_all_positive and not previous_tc_all_correct:
+                    tc_may_show_later.append(testcases[-1])
                 if self.public_testcases[tc_idx]:
                     public_testcases.append(testcases[-1])
                     # Only block restricted feedback if this is the first
@@ -411,6 +418,10 @@ class ScoreTypeGroup(ScoreTypeAlone):
                     # leaking info on private testcases.
                     if tc_outcome != "Correct":
                         previous_tc_all_correct = False
+                        if previous_tc_all_positive and tc_outcome != "Partially correct":
+                            previous_tc_all_positive = False
+                            for hidden_tc in tc_may_show_later:
+                                hidden_tc["show_in_restricted_feedback"] = True
                 else:
                     public_testcases.append({"idx": tc_idx})
 
