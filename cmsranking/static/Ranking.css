@@ -390,6 +390,10 @@ abbr {
     width: 48px;
 }
 
+#Scoreboard_cols col.user_id {
+    width: 48px;
+}
+
 #Scoreboard_cols col.team {
     /* This is the minimum width needed to contain a flag */
     width: 42px;
@@ -435,6 +439,7 @@ abbr {
     text-align: center;
 }
 
+#Scoreboard_body tr td.user_id,
 #Scoreboard_body tr td.f_name,
 #Scoreboard_body tr td.l_name {
     text-align: left;
@@ -452,6 +457,7 @@ abbr {
     cursor: pointer;
 }
 
+#Scoreboard_body tr:hover td.user_id,
 #Scoreboard_body tr:hover td.f_name,
 #Scoreboard_body tr:hover td.l_name,
 #Scoreboard_body tr:hover td.team {
@@ -459,6 +465,7 @@ abbr {
     border-radius: 5px;
 }
 
+#Scoreboard_body tr.selected td.user_id,
 #Scoreboard_body tr.selected td.f_name,
 #Scoreboard_body tr.selected td.l_name {
     font-weight: bold;
