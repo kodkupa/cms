@@ -64,6 +64,7 @@ var DataStore = new function () {
         $.ajax({
             url: Config.get_contest_list_url(),
             dataType: "json",
+            cache: false,
             success: function (data, status, xhr) {
                 self.contest_init_time = parseFloat(xhr.getResponseHeader("Timestamp"));
                 for (var key in data) {
@@ -84,6 +85,7 @@ var DataStore = new function () {
             $.ajax({
                 url: Config.get_contest_read_url(cmd[1]),
                 dataType: "json",
+                cache: false,
                 success: function (data) {
                     self.create_contest(cmd[1], data);
                 },
@@ -97,6 +99,7 @@ var DataStore = new function () {
             $.ajax({
                 url: Config.get_contest_read_url(cmd[1]),
                 dataType: "json",
+                cache: false,
                 success: function (data) {
                     self.update_contest(cmd[1], data);
                 },
@@ -158,6 +161,7 @@ var DataStore = new function () {
         $.ajax({
             url: Config.get_task_list_url(),
             dataType: "json",
+            cache: false,
             success: function (data, status, xhr) {
                 self.task_init_time = parseFloat(xhr.getResponseHeader("Timestamp"));
                 for (var key in data) {
@@ -181,6 +185,7 @@ var DataStore = new function () {
             $.ajax({
                 url: Config.get_task_read_url(cmd[1]),
                 dataType: "json",
+                cache: false,
                 success: function (data) {
                     self.create_task(cmd[1], data);
                 },
@@ -194,6 +199,7 @@ var DataStore = new function () {
             $.ajax({
                 url: Config.get_task_read_url(cmd[1]),
                 dataType: "json",
+                cache: false,
                 success: function (data) {
                     self.update_task(cmd[1], data);
                 },
@@ -265,6 +271,7 @@ var DataStore = new function () {
         $.ajax({
             url: Config.get_team_list_url(),
             dataType: "json",
+            cache: false,
             success: function (data, status, xhr) {
                 self.team_init_time = parseFloat(xhr.getResponseHeader("Timestamp"));
                 for (var key in data) {
@@ -285,6 +292,7 @@ var DataStore = new function () {
             $.ajax({
                 url: Config.get_team_read_url(cmd[1]),
                 dataType: "json",
+                cache: false,
                 success: function (data) {
                     self.create_team(cmd[1], data);
                 },
@@ -298,6 +306,7 @@ var DataStore = new function () {
             $.ajax({
                 url: Config.get_team_read_url(cmd[1]),
                 dataType: "json",
+                cache: false,
                 success: function (data) {
                     self.update_team(cmd[1], data);
                 },
@@ -359,6 +368,7 @@ var DataStore = new function () {
         $.ajax({
             url: Config.get_user_list_url(),
             dataType: "json",
+            cache: false,
             success: function (data, status, xhr) {
                 self.user_init_time = parseFloat(xhr.getResponseHeader("Timestamp"));
                 for (var key in data) {
@@ -382,6 +392,7 @@ var DataStore = new function () {
             $.ajax({
                 url: Config.get_user_read_url(cmd[1]),
                 dataType: "json",
+                cache: false,
                 success: function (data) {
                     self.create_user(cmd[1], data);
                 },
@@ -395,6 +406,7 @@ var DataStore = new function () {
             $.ajax({
                 url: Config.get_user_read_url(cmd[1]),
                 dataType: "json",
+                cache: false,
                 success: function (data) {
                     self.update_user(cmd[1], data);
                 },
@@ -577,6 +589,7 @@ var DataStore = new function () {
         $.ajax({
             url: Config.get_score_url(),
             dataType: "json",
+            cache: false,
             success: function (data, status, xhr) {
                 self.score_init_time = parseFloat(xhr.getResponseHeader("Timestamp"));
                 for (var u_id in data) {

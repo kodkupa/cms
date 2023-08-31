@@ -106,6 +106,7 @@ var UserDetail = new function () {
         $.ajax({
             url: Config.get_submissions_url(self.user_id),
             dataType: "json",
+            cache: false,
             success: self.submissions_callback,
             error: function () {
                 console.error("Error while getting the submissions for " + self.user_id);
