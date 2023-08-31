@@ -30,6 +30,7 @@ var HistoryStore = new function () {
         $.ajax({
             url: Config.get_history_url(),
             dataType: "json",
+            cache: false,
             success: function (data) {
                 self.perform_update(data, callback);
             },
