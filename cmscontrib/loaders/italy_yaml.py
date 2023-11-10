@@ -305,6 +305,10 @@ class YamlLoader(ContestLoader, TaskLoader, UserLoader, TeamLoader):
 
         logger.info("User parameters loaded.")
 
+        load(conf, args, "email")
+        load(conf, args, "timezone")
+        load(conf, args, "preferred_languages")
+
         return User(**args)
 
     def get_team(self):
