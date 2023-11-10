@@ -69,6 +69,7 @@ class ContestImporter:
         update_contest: bool,
         update_tasks: bool,
         no_statements: bool,
+        skip_tasks: bool,
         delete_stale_participations: bool,
         loader_class: type[ContestLoader],
     ):
@@ -78,6 +79,7 @@ class ContestImporter:
         self.update_contest = update_contest
         self.update_tasks = update_tasks
         self.no_statements = no_statements
+        self.skip_tasks = skip_tasks
         self.delete_stale_participations = delete_stale_participations
         self.file_cacher = FileCacher()
 
@@ -113,11 +115,12 @@ class ContestImporter:
             try:
                 contest = self._contest_to_db(
                     session, contest, contest_has_changed)
-                # Detach all tasks before reattaching them
-                for t in list(contest.tasks):
-                    t.contest = None
-                for tasknum, taskname in enumerate(tasks):
-                    self._task_to_db(session, contest, tasknum, taskname)
+                if not self.skip_tasks:
+                    # Detach all tasks before reattaching them
+                    for t in list(contest.tasks):
+                        t.contest = None
+                    for tasknum, taskname in enumerate(tasks):
+                        self._task_to_db(session, contest, tasknum, taskname)
                 # Delete stale participations if asked to, then import all
                 # others.
                 if self.delete_stale_participations:
@@ -406,6 +409,11 @@ If updating a contest already in the DB:
         help="do not import / update task statements"
     )
     parser.add_argument(
+        "-s", "--skip-tasks",
+        action="store_true",
+        help="do not change tasks of the contest"
+    )
+    parser.add_argument(
         "--delete-stale-participations",
         action="store_true",
         help="when updating a contest, delete the participations not in the "
@@ -433,6 +441,7 @@ If updating a contest already in the DB:
         update_contest=args.update_contest,
         update_tasks=args.update_tasks,
         no_statements=args.no_statements,
+        skip_tasks=args.skip_tasks,
         delete_stale_participations=args.delete_stale_participations,
         loader_class=loader_class)
     success = importer.do_import()
