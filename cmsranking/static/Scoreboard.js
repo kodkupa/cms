@@ -153,10 +153,8 @@ var Scoreboard = new function () {
         var result = " \
 <col class=\"sel\"/> \
 <col class=\"rank\"/> \
-<col class=\"f_name\"/> <col/><col/><col/><col/><col/><col/><col/><col/><col/> \
-<col class=\"l_name\"/> <col/><col/><col/><col/><col/><col/><col/><col/><col/> \
-<col class=\"user_id\"/> \
-<col class=\"team\"/>";
+<col class=\"l_name\"/> <col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/> \
+<col class=\"team\"/> <col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/>";
 
         var contests = DataStore.contest_list;
         for (var i in contests) {
@@ -189,10 +187,8 @@ var Scoreboard = new function () {
 <tr> \
     <th class=\"sel\"></th> \
     <th class=\"rank\">Rank</th> \
-    <th colspan=\"10\" class=\"f_name\">First Name</th> \
-    <th colspan=\"10\" class=\"l_name\">Last Name</th> \
-    <th class=\"user_id\">ID</th> \
-    <th class=\"team\">Team</th>";
+    <th colspan=\"20\" class=\"l_name\">Team Name</th> \
+    <th colspan=\"20\" class=\"team\">School</th>";
 
         var contests = DataStore.contest_list;
         for (var i in contests) {
@@ -237,17 +233,15 @@ var Scoreboard = new function () {
 <tr class=\"user" + (user["selected"] > 0 ? " selected color" + user["selected"] : "") + "\" data-user=\"" + user["key"] + "\"> \
     <td class=\"sel\"></td> \
     <td class=\"rank\">" + user["rank"] + "</td> \
-    <td colspan=\"10\" class=\"f_name\">" + escapeHTML(user["f_name"]) + "</td> \
-    <td colspan=\"10\" class=\"l_name\">" + escapeHTML(user["l_name"]) + "</td> \
-    <td class=\"user_id\">" + user["key"] + "</td>";
+    <td colspan=\"20\" class=\"l_name\">" + escapeHTML(user["l_name"]) + "</td>";
 
-        if (user['team']) {
+    if (user['team']) {
             result += " \
-    <td class=\"team\"><img src=\"" + Config.get_flag_url(user["team"]) + "\" title=\"" + DataStore.teams[user["team"]]["name"] + "\" /></td>";
-        } else {
-            result += " \
-    <td class=\"team\"></td>";
-        }
+        <td colspan=\"20\" class=\"team\">" + DataStore.teams[user["team"]]["name"] + "</td>";
+    } else {
+        result += " \
+        <td colspan=\"20\" class=\"team\"></td>";
+    }
 
         var contests = DataStore.contest_list;
         for (var i in contests) {
@@ -406,11 +400,10 @@ var Scoreboard = new function () {
         delete old_user["row"];
         delete old_user["index"];
 
-        $row.children("td.f_name").text(user["f_name"]);
         $row.children("td.l_name").text(user["l_name"]);
 
         if (user["team"]) {
-            $row.children(".team").html("<img src=\"" + Config.get_flag_url(user["team"]) + "\" title=\"" + DataStore.teams[user["team"]]["name"] + "\" />");
+            $row.children(".team").html(DataStore.teams[user["team"]]["name"]);
         } else {
             $row.children(".team").text("");
         }
