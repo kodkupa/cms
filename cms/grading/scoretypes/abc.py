@@ -264,9 +264,9 @@ class ScoreTypeGroup(ScoreTypeAlone):
                or (feedback_level == FEEDBACK_LEVEL_OI_RESTRICTED
                and tc["show_in_oi_restricted_feedback"])) %}
         {% if show_tc %}
-            {% if tc["outcome"] == "Correct" %}
+            {% if tc["score"] >= 1.0 %}
                 <tr class="correct">
-            {% elif tc["outcome"] == "Not correct" %}
+            {% elif tc["score"] <= 0.0 %}
                 <tr class="notcorrect">
             {% else %}
                 <tr class="partiallycorrect">
@@ -412,6 +412,7 @@ class ScoreTypeGroup(ScoreTypeAlone):
 
                 testcases.append({
                     "idx": tc_idx,
+                    "score": tc_score,
                     "outcome": tc_outcome,
                     "text": evaluations[tc_idx].text,
                     "time": evaluations[tc_idx].execution_time,
