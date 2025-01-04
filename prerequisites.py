@@ -299,7 +299,7 @@ def install():
         subprocess.check_call(["sudo", "-E", "-u", real_user,
                                sys.executable, sys.argv[0], "build"])
 
-    install_isolate()
+    # install_isolate()
 
     # We set permissions for each manually installed files, so we want
     # max liberty to change them.
