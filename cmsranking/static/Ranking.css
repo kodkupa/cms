@@ -917,8 +917,26 @@ abbr {
 #UserDetail_l_name,
 #UserDetail_team,
 #UserDetail_flag {
+    position: absolute;
+    right: 470px;
     font-size: 2em;
     line-height: 1.5em;
+}
+
+#UserDetail_f_name {
+    top: 0;
+}
+
+#UserDetail_l_name {
+    top: 1.5em;
+}
+
+#UserDetail_team {
+    bottom: 100px;
+}
+
+#UserDetail_flag {
+    bottom: 0;
 }
 
 #UserDetail_face {
