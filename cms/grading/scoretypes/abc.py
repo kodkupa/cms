@@ -434,7 +434,7 @@ class ScoreTypeGroup(ScoreTypeAlone):
                 parameter)
             st_score = st_score_fraction * parameter[0]
 
-            if st_score_fraction < 1.0:
+            if tc_first_lowest_idx is not None and st_score_fraction < 1.0:
                 for tc in testcases:
                     tc["show_in_restricted_feedback"] = (tc["idx"] <= tc_first_lowest_idx)
                     tc["show_in_oi_restricted_feedback"] = (tc["idx"] == tc_first_lowest_idx)
