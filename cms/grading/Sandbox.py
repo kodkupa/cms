@@ -961,6 +961,10 @@ class IsolateSandbox(SandboxBase):
         # On Arch, most files of pypy3 are installed under /opt/pypy3/
         self.maybe_add_mapped_directory("/opt/pypy3")
 
+        self.maybe_add_mapped_directory("/usr/share/dotnet")
+        self.maybe_add_mapped_directory("/usr/lib/dotnet")
+        self.maybe_add_mapped_directory("/opt/dotnet-packages")
+
         # Tell isolate to get the sandbox ready. We do our best to cleanup
         # after ourselves, but we might have missed something if a previous
         # worker was interrupted in the middle of an execution, so we issue an
@@ -1155,6 +1159,7 @@ class IsolateSandbox(SandboxBase):
         if self.extra_timeout is not None:
             res += ["--extra-time=%g" % self.extra_timeout]
         res += ["--meta=%s" % ("%s.%d" % (self.info_basename, self.exec_num))]
+        res += ["--open-files=1024"]
         res += ["--run"]
         return res
 
