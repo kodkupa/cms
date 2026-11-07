@@ -179,6 +179,7 @@ setup(
             "C# / .NET=cms.grading.languages.csharp_dotnet:CSharpDotNET",
             "Haskell / ghc=cms.grading.languages.haskell_ghc:HaskellGhc",
             "Java / JDK=cms.grading.languages.java_jdk:JavaJDK",
+            "Kotlin / JDK=cms.grading.languages.kotlin_jdk:KotlinJDK",
             "Pascal / fpc=cms.grading.languages.pascal_fpc:PascalFpc",
             "PHP=cms.grading.languages.php:Php",
             "Python 3 / CPython=cms.grading.languages.python3_cpython:Python3CPython",
