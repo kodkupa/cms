@@ -195,6 +195,11 @@ class Sandbox:
     EXIT_MEM_LIMIT = "memory limit exceeded"
     EXIT_NONZERO_RETURN = "nonzero return"
 
+    # If the command line starts with this command name, we are just
+    # going to execute it without sandboxing, and with all permissions
+    # on the current directory.
+    SECURE_COMMANDS = ["/bin/cp", "/bin/mv", "/usr/bin/zip", "/usr/bin/unzip"]
+
     def __init__(
         self,
         box_index: int,
@@ -985,6 +990,35 @@ class Sandbox:
         self.meta = None
         self.exec_num += 1
 
+        # We run a selection of commands without isolate, as they need
+        # to create new files. This is safe because these commands do
+        # not depend on the user input.
+        if command[0] in Sandbox.SECURE_COMMANDS:
+            logger.debug("Executing non-securely: %s at %s",
+                         pretty_print_cmdline(command), self._home)
+            try:
+                prev_permissions = stat.S_IMODE(os.stat(self._home).st_mode)
+                os.chmod(self._home, 0o700)
+                with open(self.cmd_file, 'at', encoding="utf-8") as cmds:
+                    cmds.write("%s\n" % (pretty_print_cmdline(command)))
+                p = subprocess.Popen(command, cwd=self._home,
+                                     stdin=stdin, stdout=stdout, stderr=stderr,
+                                     close_fds=self.close_fds)
+                os.chmod(self._home, prev_permissions)
+                # For secure commands, we clear the output so that it
+                # is not forwarded to the contestants. Secure commands
+                # are "setup" commands, which should not fail or
+                # provide information for the contestants.
+                open(os.path.join(self._home, self.stdout_file), "wb").close()
+                open(os.path.join(self._home, self.stderr_file), "wb").close()
+                self._write_empty_run_log(self.exec_num)
+            except OSError:
+                logger.critical(
+                    "Failed to execute program in sandbox with command: %s",
+                    pretty_print_cmdline(command), exc_info=True)
+                raise
+            return p
+
         args = ["isolate"] + self.build_box_options() + ["--"] + command
         logger.debug(
             "Executing program in sandbox with command: `%s'.",
@@ -1013,6 +1047,15 @@ class Sandbox:
             raise
 
         return p
+
+    def _write_empty_run_log(self, index: int):
+        """Write a fake run.log file with no information."""
+        info_file = "%s.%d" % (self.info_basename, index)
+        with open(info_file, "wt", encoding="utf-8") as f:
+            f.write("time:0.000\n")
+            f.write("time-wall:0.000\n")
+            f.write("max-rss:0\n")
+            f.write("cg-mem:0\n")
 
     def initialize_isolate(self):
         """Initialize isolate's box."""
